@@ -80,7 +80,7 @@ export default function GhostScoreTool({ autoAddress, prefillData }) {
         const timeoutId = setTimeout(() => controller.abort(), 15000);
 
         try {
-            const res = await fetch(`import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/ghost-score/${encodeURIComponent(cleanAddress)}`, {
+            const res = await fetch(`https://site--ghost-radar--26zc8pyqkn62.code.run/api/ghost-score/${encodeURIComponent(cleanAddress)}`, {
                 signal: controller.signal
             });
             clearTimeout(timeoutId);

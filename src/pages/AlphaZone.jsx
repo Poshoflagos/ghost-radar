@@ -229,7 +229,7 @@ export default function AlphaZone() {
       // Ask for each section separately so every section gets its own full list
       const results = await Promise.allSettled(
         LANES_TO_FETCH.map(async (lane) => {
-          const response = await fetch(`import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/alpha-zone?lane=${lane}`, {
+          const response = await fetch(`https://site--ghost-radar--26zc8pyqkn62.code.run/api/alpha-zone?lane=${lane}`, {
             signal: controller.signal
           });
           if (!response.ok) {

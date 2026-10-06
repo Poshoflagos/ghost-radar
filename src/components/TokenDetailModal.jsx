@@ -11,7 +11,7 @@ export default function TokenDetailModal({ token, onClose }) {
     let isMounted = true;
     setLoadingSafety(true);
 
-    fetch(`import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/token/${token.contract}/safety`)
+    fetch(`https://site--ghost-radar--26zc8pyqkn62.code.run/api/token/${token.contract}/safety`)
       .then((res) => {
         if (!res.ok) throw new Error('Safety check failed');
         return res.json();

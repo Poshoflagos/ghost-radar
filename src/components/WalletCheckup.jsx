@@ -42,7 +42,7 @@ export default function WalletCheckup() {
     let res, data;
 
     try {
-      res = await fetch(`import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/wallet/${address.trim()}/checkup`);
+      res = await fetch(`https://site--ghost-radar--26zc8pyqkn62.code.run/api/wallet/${address.trim()}/checkup`);
     } catch (err) {
       await animationTimer;
       setError("Forensic engine offline. Ensure Node.js server is running on port 3001.");

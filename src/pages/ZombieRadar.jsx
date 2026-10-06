@@ -84,7 +84,7 @@ export default function ZombieRadar() {
   const fetchTelemetry = async (mode = activeMode) => {
     setLoading(true);
     try {
-      const res = await fetch(`import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/zombie-radar?mode=${mode}`);
+      const res = await fetch(`https://site--ghost-radar--26zc8pyqkn62.code.run/api/zombie-radar?mode=${mode}`);
       const json = await res.json();
       if (json.success) {
         setTokens(json.data || []);

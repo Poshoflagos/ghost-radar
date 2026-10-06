@@ -37,8 +37,8 @@ export default function WalletLeaderboard({ timeframe = '48h' }) {
         setMessage('');
 
         const endpoint = activeTokenSearch
-            ? `import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/wallet-leaderboard/token/${encodeURIComponent(activeTokenSearch.trim())}`
-            : `import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/wallet-leaderboard/top`;
+            ? `https://site--ghost-radar--26zc8pyqkn62.code.run/api/wallet-leaderboard/token/${encodeURIComponent(activeTokenSearch.trim())}`
+            : `https://site--ghost-radar--26zc8pyqkn62.code.run/api/wallet-leaderboard/top`;
 
         fetch(endpoint)
             .then(res => res.json().catch(() => ({})))
