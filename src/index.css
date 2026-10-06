@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=JetBrains+Mono:wght@300;400;700&family=Inter:wght@300;400;600&display=swap');
+
+/* Tailwind v4 requires this single import instead of the 3 old ones */
+@import "tailwindcss";
+
+/* This is how we define custom colors in Tailwind v4 */
+@theme {
+  --color-ghost-black: #030303;
+  --color-ghost-bg: #0A0A0A;
+  --color-ghost-surface: #111111;
+  --color-ghost-border: #222222;
+  --color-gold-500: #D4AF37;
+  --color-gold-400: #F0D775;
+  --color-offwhite: #F4F4F0;
+  --color-muted: #888888;
+  --color-danger: #EF4444;
+  --color-safe: #10B981;
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-halloween: 'Creepster', cursive;
+}
+
+body {
+  background-color: var(--color-ghost-black);
+  color: var(--color-offwhite);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for our terminal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ghost-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ghost-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}
+
+/* Ambient Background Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+.floating-bubble { animation: float 7s ease-in-out infinite; }
+.floating-bubble:nth-child(even) { animation-delay: -3.5s; }
+
+@keyframes fly-across {
+  0% { transform: translate(-20vw, 20vh) scale(1) rotate(-5deg); opacity: 0; }
+  10% { opacity: 0.85; } 
+  90% { opacity: 0.85; }
+  100% { transform: translate(120vw, -10vh) scale(0.7) rotate(5deg); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes spectral-drift {
+  0% { transform: translateY(15vh) scale(1); opacity: 0.1; }
+  50% { transform: translateY(-15vh) scale(1.3); opacity: 0.4; } 
+  100% { transform: translateY(15vh) scale(1); opacity: 0.1; }
+}
+
+@keyframes data-rain {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.15; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.animate-fly { animation: fly-across 50s linear infinite; }
+.animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+.animate-drift { animation: spectral-drift 12s ease-in-out infinite; }
+.animate-rain { animation: data-rain 20s linear infinite; }
