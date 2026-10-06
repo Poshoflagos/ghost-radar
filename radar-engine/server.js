@@ -1495,14 +1495,30 @@ setInterval(pruneGemboxRejections, 6 * 60 * 60 * 1000);
 
 const PORT = process.env.PORT || 3001;
 async function bootstrap() {
-    await initDB();
-    
-    await ghostLens.init();
+    // Open the port FIRST so Northflank can always reach the server.
+    app.listen(PORT, '0.0.0.0', () => console.log(`[Ghost Radar] Core Engine running on port ${PORT}`));
 
-    startSolanaStream();
-    startPumpCollector();
-    runGemBoxAlphaScanner(); 
-    await runAlphaZoneSweeper();
-    app.listen(PORT, () => console.log(`[Ghost Radar] Core Engine running on port ${PORT}`));
+    // Slow setup steps run afterwards. A failure here will no longer stop the server.
+    try {
+        await initDB();
+    } catch (err) {
+        console.error('[Ghost Radar] initDB failed:', err.message);
+    }
+
+    try {
+        await ghostLens.init();
+    } catch (err) {
+        console.error('[Ghost Radar] ghostLens init failed:', err.message);
+    }
+
+    try {
+        startSolanaStream();
+        startPumpCollector();
+    } catch (err) {
+        console.error('[Ghost Radar] Stream start failed:', err.message);
+    }
+
+    runGemBoxAlphaScanner();
+    runAlphaZoneSweeper().catch((err) => console.error('[Ghost Radar] Alpha Zone first sweep failed:', err.message));
 }
 bootstrap();
