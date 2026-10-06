@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Target, TrendingUp, TrendingDown, ExternalLink, RefreshCw, Copy, Check, Flame, Activity } from 'lucide-react';
 
-const API_URL = import.meta.env.VITE_API_URL || 'import.meta.env.VITE_API_URL || 'http://localhost:3001'';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';localhost:3001'';
 
 const formatAge = (min) => {
   const m = Number(min || 0);

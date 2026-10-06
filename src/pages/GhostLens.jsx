@@ -1,4 +1,3 @@
-// src/pages/GhostLens.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   UploadCloud, Image as ImageIcon, Search, Copy, Check, Shield, 
@@ -243,7 +242,7 @@ export default function GhostLens() {
       setScanStep('Indexing block timestamps & chronological genesis hierarchy...');
       await new Promise(r => setTimeout(r, 600));
 
-      const res = await fetch('import.meta.env.VITE_API_URL || 'http://localhost:3001'/api/ghost-lens/scan', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/api/ghost-lens/scan`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ image: sourceImage })
