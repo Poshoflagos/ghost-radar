@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Target, TrendingUp, TrendingDown, ExternalLink, RefreshCw, Copy, Check, Flame, Activity } from 'lucide-react';
 
-const API_URL = https://site--ghost-radar--26zc8pyqkn62.code.run;
-
+const API_URL = 'https://site--ghost-radar--26zc8pyqkn62.code.run';
 const formatAge = (min) => {
   const m = Number(min || 0);
   if (m < 60) return `${m}m old`;

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback, useMemo, useRef, memo } from '
 import { Target, TrendingUp, Zap, Activity, ExternalLink, X, Copy, ShieldCheck, RefreshCw, AlertTriangle } from 'lucide-react';
 
 // Set VITE_API_URL in the frontend .env only when the backend leaves localhost.
-const API_BASE = https://site--ghost-radar--26zc8pyqkn62.code.run;
+const API_BASE = 'https://site--ghost-radar--26zc8pyqkn62.code.run';
 const MAX_PICKS = 5;
 const REFRESH_MS = 60000;
 const DROP_HOURS_UTC = [4, 8, 12, 16, 20]; // keep in sync with DROP_HOURS_UTC in server.js
