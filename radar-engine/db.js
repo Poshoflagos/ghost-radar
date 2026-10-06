@@ -13,9 +13,10 @@ if (!NEON_URL) {
 export const pool = new Pool({
     connectionString: NEON_URL,
     ssl: { rejectUnauthorized: false },
-    connectionTimeoutMillis: 10000, // 10s wait for Neon to wake up
-    idleTimeoutMillis: 30000,       // Close idle connections after 30s to stay within free tier limits
-    max: 10                         // 10 connections is the sweet spot for Neon's free pooler
+    connectionTimeoutMillis: 20000, // wait up to 20s for a connection (slow London to Ohio link)
+    idleTimeoutMillis: 300000,      // keep idle connections for 5 minutes so we don't redo the slow handshake
+    keepAlive: true,                // stops long-distance connections from being silently dropped
+    max: 10
 });
 
 pool.on('error', (err) => {
