@@ -1490,7 +1490,8 @@ setInterval(runAlphaZoneSweeper, 60 * 1000);
 setInterval(pruneStaleAlphaZone, 15 * 60 * 1000);  
 setInterval(generateDailyLedger, 60 * 60 * 1000);   
 setInterval(updateGemboxActivePicks, 60000);        
-setInterval(() => ghostLens.harvest(), 5 * 60 * 1000);
+// GHOST LENS PAUSED FOR TEST: harvest every 5 minutes is switched off
+// setInterval(() => ghostLens.harvest(), 5 * 60 * 1000);
 setInterval(pruneGemboxRejections, 6 * 60 * 60 * 1000);
 
 const PORT = process.env.PORT || 3001;
@@ -1505,11 +1506,12 @@ async function bootstrap() {
         console.error('[Ghost Radar] initDB failed:', err.message);
     }
 
-    try {
-        await ghostLens.init();
-    } catch (err) {
-        console.error('[Ghost Radar] ghostLens init failed:', err.message);
-    }
+    // GHOST LENS PAUSED FOR TEST: init is switched off
+    // try {
+    //     await ghostLens.init();
+    // } catch (err) {
+    //     console.error('[Ghost Radar] ghostLens init failed:', err.message);
+    // }
 
     try {
         startSolanaStream();
